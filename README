@@ -1,4 +1,8 @@
 ofPennerEasing
 ==============
 
-A port of Robert Penner's easing equations to c++
+A port of Robert Penner's easing equations to c++.
+
+You can download an openframeworks usage example here
+
+http://www.jesusgollonet.com/blog/2007/09/24/penner-easing-cpp/

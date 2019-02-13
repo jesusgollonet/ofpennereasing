@@ -1,24 +1,24 @@
 #include "Bounce.h"
 
-float Bounce::easeIn (float t,float b , float c, float d) {
-	return c - easeOut (d-t, 0, c, d) + b;
+float Bounce::easeIn (float time,float begin , float change, float duration) {
+	return change - easeOut (duration-time, 0, change, duration) + begin;
 }
-float Bounce::easeOut(float t,float b , float c, float d) {
-	if ((t/=d) < (1/2.75f)) {
-		return c*(7.5625f*t*t) + b;
-	} else if (t < (2/2.75f)) {
-		float postFix = t-=(1.5f/2.75f);
-		return c*(7.5625f*(postFix)*t + .75f) + b;
-	} else if (t < (2.5/2.75)) {
-			float postFix = t-=(2.25f/2.75f);
-		return c*(7.5625f*(postFix)*t + .9375f) + b;
+float Bounce::easeOut(float time,float begin , float change, float duration) {
+	if ((time/=duration) < (1/2.75f)) {
+		return change*(7.5625f*time*time) + begin;
+	} else if (time < (2/2.75f)) {
+		float postFix = time-=(1.5f/2.75f);
+		return change*(7.5625f*(postFix)*time + .75f) + begin;
+	} else if (time < (2.5/2.75)) {
+			float postFix = time-=(2.25f/2.75f);
+		return change*(7.5625f*(postFix)*time + .9375f) + begin;
 	} else {
-		float postFix = t-=(2.625f/2.75f);
-		return c*(7.5625f*(postFix)*t + .984375f) + b;
+		float postFix = time-=(2.625f/2.75f);
+		return change*(7.5625f*(postFix)*time + .984375f) + begin;
 	}
 }
 
-float Bounce::easeInOut(float t,float b , float c, float d) {
-	if (t < d/2) return easeIn (t*2, 0, c, d) * .5f + b;
-	else return easeOut (t*2-d, 0, c, d) * .5f + c*.5f + b;
+float Bounce::easeInOut(float time,float begin , float change, float duration) {
+	if (time < duration/2) return easeIn (time*2, 0, change, duration) * .5f + begin;
+	else return easeOut (time*2-duration, 0, change, duration) * .5f + change*.5f + begin;
 }

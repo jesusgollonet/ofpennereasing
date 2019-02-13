@@ -7,9 +7,9 @@ class Circ {
 	
 	public:
 		
-		static float easeIn(float t,float b , float c, float d);
-		static float easeOut(float t,float b , float c, float d);
-		static float easeInOut(float t,float b , float c, float d);
+		static float easeIn(float time,float begin , float change, float duration);
+		static float easeOut(float time,float begin , float change, float duration);
+		static float easeInOut(float time,float begin , float change, float duration);
 };
 
 #endif

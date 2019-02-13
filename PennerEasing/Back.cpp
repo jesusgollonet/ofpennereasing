@@ -1,18 +1,18 @@
 #include "Back.h"
 
-float Back::easeIn (float t,float b , float c, float d) {
+float Back::easeIn (float time,float begin , float change, float duration) {
 	float s = 1.70158f;
-	float postFix = t/=d;
-	return c*(postFix)*t*((s+1)*t - s) + b;
+	float postFix = time/=duration;
+	return change*(postFix)*time*((s+1)*time - s) + begin;
 }
-float Back::easeOut(float t,float b , float c, float d) {	
+float Back::easeOut(float time,float begin , float change, float duration) {	
 	float s = 1.70158f;
-	return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
+	return change*((time=time/duration-1)*time*((s+1)*time + s) + 1) + begin;
 }
 
-float Back::easeInOut(float t,float b , float c, float d) {
+float Back::easeInOut(float time,float begin , float change, float duration) {
 	float s = 1.70158f;
-	if ((t/=d/2) < 1) return c/2*(t*t*(((s*=(1.525f))+1)*t - s)) + b;
-	float postFix = t-=2;
-	return c/2*((postFix)*t*(((s*=(1.525f))+1)*t + s) + 2) + b;
+	if ((time/=duration/2) < 1) return change/2*(time*time*(((s*=(1.525f))+1)*time - s)) + begin;
+	float postFix = time-=2;
+	return change/2*((postFix)*time*(((s*=(1.525f))+1)*time + s) + 2) + begin;
 }

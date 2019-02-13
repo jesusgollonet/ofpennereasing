@@ -1,15 +1,15 @@
 #include "Expo.h"
 
-float Expo::easeIn (float t,float b , float c, float d) {
-	return (t==0) ? b : c * pow(2, 10 * (t/d - 1)) + b;
+float Expo::easeIn (float time,float begin , float change, float duration) {
+	return (time==0) ? begin : change * pow(2, 10 * (time/duration - 1)) + begin;
 }
-float Expo::easeOut(float t,float b , float c, float d) {
-	return (t==d) ? b+c : c * (-pow(2, -10 * t/d) + 1) + b;	
+float Expo::easeOut(float time,float begin , float change, float duration) {
+	return (time==duration) ? begin+change : change * (-pow(2, -10 * time/duration) + 1) + begin;	
 }
 
-float Expo::easeInOut(float t,float b , float c, float d) {
-	if (t==0) return b;
-	if (t==d) return b+c;
-	if ((t/=d/2) < 1) return c/2 * pow(2, 10 * (t - 1)) + b;
-	return c/2 * (-pow(2, -10 * --t) + 2) + b;
+float Expo::easeInOut(float time,float begin , float change, float duration) {
+	if (time==0) return begin;
+	if (time==duration) return begin+change;
+	if ((time/=duration/2) < 1) return change/2 * pow(2, 10 * (time - 1)) + begin;
+	return change/2 * (-pow(2, -10 * --time) + 2) + begin;
 }
